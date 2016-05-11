@@ -1,42 +1,59 @@
 <?php
 
-//include database connection function
-include 'config.php';
-include "lib/Smarty/libs/Smarty.class.php";
-
-$request = $_REQUEST;
-
-//error_log('log :: ' . print_r($request,1) );
-
-$allValues = array();
-$response = array();
-
-// DEBUG
-// include('testdata.php'); // Overrides $request with testdata.
-
-// Process the input data, validate, clean, transform
-include('lib/process.php');
-
-// Stuff to do before inserting to the DB
-
-$markedAsSpam = false;
-// Check for spam.
-include('lib/prehooks/spamfilter.php');
-
-// Send an email about the enquiry
-include('lib/prehooks/enquiry2email.php');
-
-if($markedAsSpam){
-    echo 0;
-    exit();
+if ( empty($_POST) ){
+    //exit();
 }
 
+require 'vendor/autoload.php';
+
+$setting = require 'config/config.php';
+require 'class/MyORM.php';
+require 'setup/setup.php';
+
+$validInputs = require 'setup/post-fields.php';
+
+//$request = $_POST;
+
+$testdata = array(
+    'email' => 'eprochasson@gmail.com',
+    'country-coverage' => 'Hong Kong',
+    'nationality' => 'British',
+    'name' => 'STUART HARRISON',
+    'title' => 'Dr.',
+    'first-name' => 'STUART',
+    'last-name' => 'HARRISON',
+    'type' => 'Individual',
+    'from_path' => 'landing/instant-quotation/',
+    'source' => 'GS-AD',
+    'start_time' => '2013-11-21 05:04:07',
+    'end_time' => '2013-11-21 05:04:46',
+    'remote_ip' => '202.151.171.2',
+    'page_path' => 'Welcome to Globalsurance -> Fill in the short form and get a free quote',
+    'q1' => 'Value 1',
+    'q3' => 'Value3',
+    'comments' => '',
+    'self-birth' => '08/11/1982',
+    'self-gender' => 'Male',
+    'self-occupation' => 'Hello',
+    'spouse-birth' => '08/12/1982',
+    'spouse-gender' => 'Female',
+    'spouse-occupation' => 'Finance',
+    'child-birth1' => '08/11/1999',
+    'child-gender1' => 'Male',
+    'child-occupation1' => '',
+    'outpatient' => 'honout',
+    'dental' => '',
+    'maternity' => 'on'
+);
+
+// DEBUG
+$request=$testdata;
+
+require 'lib/process.php';
+
+print_r($allValues);
+//$logger->info('Process',$allValues);
+
+require 'lib/insert.php';
 
 
-// Insert data in the database;
-include('lib/insert.php');
-
-
-
-// Send an email to the client.
-include('lib/posthooks/sendemail.php');

@@ -1,0 +1,9 @@
+{
+    "require": {
+        "j4mie/paris": "v1.5.4",
+        "j4mie/idiorm": "v1.5.1",
+        "monolog/monolog": "1.19.0",
+        "phpmailer/phpmailer" : "v5.2.14",
+        "twig/twig" : "v1.24.0"
+    }
+}
