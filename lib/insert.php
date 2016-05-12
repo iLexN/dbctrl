@@ -19,7 +19,7 @@ if(!$newEnquiry){
     $inquiries->set('changetime', $datetime);
     $inquiries->save();
 
-    $newUidObj = MyORM::for_table('inquiries')->use_id_column('inquiry_id')->select('uid')->find_one($inquiries->id);
+    $newUidObj = ORM::for_table('inquiries')->use_id_column('inquiry_id')->select('uid')->find_one($inquiries->id);
     $uid = $newUidObj->uid;
 }
 

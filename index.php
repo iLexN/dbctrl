@@ -1,8 +1,6 @@
 <?php
 
-if ( empty($_POST) ){
-    //exit();
-}
+require 'lib/pre-check.php';
 
 require 'vendor/autoload.php';
 
@@ -10,7 +8,8 @@ $setting = require 'config/config.php';
 require 'class/MyORM.php';
 require 'setup/setup.php';
 
-$validInputs = require 'setup/post-fields.php';
+//backupemail
+require 'lib/backup-email.php';
 
 //$request = $_POST;
 
@@ -48,6 +47,8 @@ $testdata = array(
 
 // DEBUG
 $request=$testdata;
+
+$validInputs = require 'setup/post-fields.php';
 
 require 'lib/process.php';
 

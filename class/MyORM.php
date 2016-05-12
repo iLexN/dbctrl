@@ -31,17 +31,16 @@ class MyORM extends \ORM
         $query[] = $this->_quote_identifier($this->_table_name);
         $field_list = array_map(array($this, '_quote_identifier'), array_keys($this->_dirty_fields));
         $query[] = "(" . join(", ", $field_list) . ")";
-            //$query[] = "VALUES";
+        //$query[] = "VALUES";
 
-            $placeholders = $this->_create_placeholders($this->_dirty_fields);
+        $placeholders = $this->_create_placeholders($this->_dirty_fields);
         $query[] = "({$placeholders})";
 
         if (self::get_db($this->_connection_name)->getAttribute(PDO::ATTR_DRIVER_NAME) == 'pgsql') {
             $query[] = 'RETURNING ' . $this->_quote_identifier($this->_get_id_column_name());
         }
 
-        echo(join(" ", $query));
+        //echo(join(" ", $query));
         return join(" ", $query);
     }
-    
 }
