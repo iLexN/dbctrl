@@ -95,11 +95,11 @@ if(isset($allValues['Persons']['Everyone'])){
         $dbTblObj = ORM::for_table($table)->create();
         $page = 0;
     } else {
-        $page = $dbTblObj->page + 1;
+        $page = $dbTblObj->page;
     }
     $dbTblObj->set('uid',$uid);
     $dbTblObj->set('site',$allValues['Inquiries']['source']);
-    $dbTblObj->set('page',$page);
+    $dbTblObj->set('page',$page + 1);
     $dbTblObj->set('date',$datetime);
     $dbTblObj->save();
 

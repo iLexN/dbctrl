@@ -1,7 +1,7 @@
 <?php
 
 if ( empty($_POST) ){
-    //exit();
+    exit();
 }
 
 $comment = isset($_POST['comments']) ? $_POST['comments'] : false;

@@ -24,12 +24,10 @@ function splitname($config){
     }
 }
 
-function mainSite($config){
+function mainSite($source){
 	// PP-FP,PP-HK => PP
-	global $request;
-	$mainSite_ar = explode('-', $request['source']);
-    //error_log('site in function'.$mainSite_ar[0]);
-	$request['mainSite'] = $mainSite_ar[0];
+	$mainSite_ar = explode('-', $source);
+	return $mainSite_ar[0];
 }
 
 function emailDomain(){
