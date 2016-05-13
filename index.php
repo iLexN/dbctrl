@@ -21,7 +21,7 @@ $validInputs = require 'setup/post-fields.php';
 
 require 'lib/process.php';
 
-print_r($allValues);
+//print_r($allValues);
 //$logger->info('Process',$allValues);
 
 require 'lib/insert.php';
@@ -29,3 +29,5 @@ require 'lib/insert.php';
 
 //send email P4
 require 'lib/send-p4-email.php';
+
+echo($uid);
