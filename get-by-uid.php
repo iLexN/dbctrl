@@ -1,90 +1,65 @@
 <?php
 
-require 'config.php';
+$uid = isset($_GET['uid']) ? $_GET['uid'] : false;
 
-$uid = isset($_GET['uid']) ? $_GET['uid'] : FALSE;
+$setting = require 'config/config.php';
+require 'vendor/autoload.php';
+require 'setup/setup.php';
 
+$out = array();
 if ($uid) {
+    /* @var $enquiry ORM */
+    $enquiry = ORM::for_table('inquiries')
+            ->select('firstname')
+            ->select('lastname')
+            ->select('email')
+            ->select('phone')
+            ->select('nationality')
+            ->select('countryofenquiry')
+            ->select('countryofcover')
+            ->select('lengthofcover')
+            ->select('outpatient')
+            ->where('uid', $uid)->find_one();
 
-	$enquiry = $xpdo -> getObject('Inquiries', array('uid' => $uid));
-	if (!$enquiry) {
-		error_log('Invalid uid ' . $uid);
-	}
+    if (!$enquiry) {
+        $logger->info("Invalid uid", array('uid', $uid));
+    }
 
-	
-	/*
-	//self
-	$p = $enquiry -> getMany('Persons', array('relationship' => 'Policy Holder'));
-	foreach ($p as $key => $value) {
-		//print_r($value->toArray());
-		$people['self'] = $value -> toArray();
-	}
+    $out = $enquiry->as_array();
 
-	//Spouse
-	$p = $enquiry -> getMany('Persons', array('relationship' => 'Spouse'));
-	foreach ($p as $key => $value) {
-		//print_r($value->toArray());
-		$people['Spouse'] = $value -> toArray();
-	}
+    $out['name'] = $out['firstname'] . ' ' . $out['lastname'];
+    unset($out['firstname']);
+    unset($out['lastname']);
 
-	$p2 = $enquiry -> getMany('Persons', array('relationship' => 'Child'));
-	$people['Child'] = array();
-	foreach ($p2 as $key => $value) {
-		//print_r($value->toArray());
-		$people['Child'][] = $value -> toArray();
-	}
-	*/
-	
-	$p = $enquiry->getMany('Persons');
-	$people = array();
-	
-	foreach ($p as $key => $value) {
-		$tmp_ar = $value -> toArray();
-		Switch ($tmp_ar['relationship']){
-			case 'Policy Holder':
-				$people['self'] = $tmp_ar;
-				break;
-			case 'Spouse':
-				$people['Spouse'] = $tmp_ar;
-				break;
-			case 'Child':
-				$people['Child'][] = $tmp_ar;
-				break;
-			default:
-				$people[] = $tmp_ar;
-		}
+    //person
+    /* @var $persons ORM */
+    $persons = ORM::for_table('persons')
+            ->select('gender')
+            ->select('dateofbirth')
+            ->select('relationship')
+            ->select('occupation')
+            ->where('uid', $uid)
+            ->find_many();
 
-	}
-	
-
-	$merge = array_merge($enquiry -> toArray(), array('person' => $people));
-
-	$merge['name'] = $merge['firstname'] . " " . $merge['lastname'];
-
-	foreach ($merge as $k => $v) {
-		if (empty($v)) {
-			unset($merge[$k]);
-		}
-	}
-
-	// remove extra field .. smaller size
-    unset($merge['uid']);
-	unset($merge['firstname']);
-	unset($merge['lastname']);
-	unset($merge['completeinfo']);
-	unset($merge['notes']);
-	unset($merge['previousenquiries']);
-	unset($merge['source']);
-	unset($merge['datetime']);
-	unset($merge['changetime']);
-	unset($merge['finishtime']);
-	unset($merge['insert_time']);
-	unset($merge['type']);
-	unset($merge['copied']);
-
-	//print_r($merge);
-	echo json_encode($merge);
-
-} else {
-	exit();
+    if ( $persons ){
+    $people = array();
+    foreach ($persons as $person) {
+        switch ($person->relationship) {
+            case 'Policy Holder':
+                $people['self'] = $person->as_array();
+                break;
+            case 'Spouse':
+                $people['Spouse'] = $person->as_array();
+                break;
+            case 'Child':
+                $people['Child'][] = $person->as_array();
+                break;
+            default:
+                $people[] = $person->as_array();
+        }
+    }
+    $out['person'] = $people;
+    }
 }
+
+echo(json_encode($out));
