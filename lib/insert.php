@@ -5,11 +5,14 @@ $datetime = date("Y-m-d H:i:s");
 
 if(!$newEnquiry){
     $uid = $allValues['Inquiries']['uid'];
+
+    $logger->info('here 1',$allValues['Inquiries']);
+
     /* @var $inquiries MyORM */
-    $inquiries = MyORM::for_table('inquiries')->where('uid',$uid)->find_one();
+    $inquiries = MyORM::for_table('inquiries')->use_id_column('inquiry_id')->where('uid',$uid)->find_one();
+    $logger->info('inq',$inquiries->as_array());
+
     $inquiries->set($allValues['Inquiries']);
-    $inquiries->set('datetime', $datetime);
-    $inquiries->set('changetime', $datetime);
     $inquiries->save();
 } else {
     $inquiries = MyORM::for_table('inquiries')->create();
@@ -22,13 +25,13 @@ if(!$newEnquiry){
     $newUidObj = ORM::for_table('inquiries')->use_id_column('inquiry_id')->select('uid')->find_one($inquiries->id);
     $uid = $newUidObj->uid;
 }
-
+$logger->info('here 2');
 
 //ExtraFormInfo
 $obj = 'ExtraFormInfo';
 if ( isset($allValues[$obj]) ){
     $table = 'extra_form_info';
-    $dbTblObj = ORM::for_table($table)->where('uid',$uid)->find_one();
+    $dbTblObj = ORM::for_table($table)->use_id_column('uid')->where('uid',$uid)->find_one();
     if ( !$dbTblObj ){
         $dbTblObj = ORM::for_table($table)->create();
     }
@@ -41,7 +44,7 @@ if ( isset($allValues[$obj]) ){
 $obj = 'InqUrl';
 if ( isset($allValues[$obj]) ){
     $table = 'inqUrl';
-    $dbTblObj = ORM::for_table($table)->where('uid',$uid)->find_one();
+    $dbTblObj = ORM::for_table($table)->use_id_column('inqUrl_id')->where('uid',$uid)->find_one();
     if ( !$dbTblObj ){
         $dbTblObj = ORM::for_table($table)->create();
     }
@@ -54,7 +57,7 @@ if ( isset($allValues[$obj]) ){
 $obj = 'UrlPath';
 if ( isset($allValues[$obj]) ){
     $table = 'urlPath';
-    $dbTblObj = ORM::for_table($table)->where('uid',$uid)->find_one();
+    $dbTblObj = ORM::for_table($table)->use_id_column('uid')->where('uid',$uid)->find_one();
     if ( !$dbTblObj ){
         $dbTblObj = ORM::for_table($table)->create();
     }
@@ -67,7 +70,7 @@ if ( isset($allValues[$obj]) ){
 $obj = 'TimeLog';
 if ( isset($allValues[$obj]) ){
     $table = 'time_log';
-    $dbTblObj = ORM::for_table($table)->where('uid',$uid)->find_one();
+    $dbTblObj = ORM::for_table($table)->use_id_column('uid')->where('uid',$uid)->find_one();
     if ( !$dbTblObj ){
         $dbTblObj = ORM::for_table($table)->create();
     }
@@ -90,7 +93,7 @@ if(isset($allValues['Persons']['Everyone'])){
 }
 
     $table = 'form_cach';
-    $dbTblObj = ORM::for_table($table)->where('uid',$uid)->find_one();
+    $dbTblObj = ORM::for_table($table)->use_id_column('uid')->where('uid',$uid)->find_one();
     if ( !$dbTblObj ){
         $dbTblObj = ORM::for_table($table)->create();
         $page = 0;
@@ -101,6 +104,8 @@ if(isset($allValues['Persons']['Everyone'])){
     $dbTblObj->set('site',$allValues['Inquiries']['source']);
     $dbTblObj->set('page',$page + 1);
     $dbTblObj->set('date',$datetime);
+    $c = isset($allValues['formCach']['completed']) ? $allValues['formCach']['completed'] : 0;
+    $dbTblObj->set('completed',$c);
     $dbTblObj->save();
 
 ORM::for_table('uidLog')->where_equal('uid',$uid)->delete_many();

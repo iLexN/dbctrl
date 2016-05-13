@@ -233,6 +233,9 @@ return array(
     'start_datetime' => array(
         'object' => 'TimeLog'
     ),
+    'completed' => array(
+        'object' => 'formCach'
+    ),
 
     // This one's special.
     'Persons' => array(

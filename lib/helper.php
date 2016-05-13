@@ -171,10 +171,10 @@ function getPersons(){
     }
 
     // copy name, nationality to policy holder for policy holder only
-    if (empty($person['name'])){
+    if (!isset($person['name']) && isset($request['name']) ){
         $person['name'] = $request['name'];
     }
-    if (empty($person['name'])){
+    if (!isset($person['name']) && isset($request['firstname']) && isset($request['lastname']) ){
         $person['name'] = $request['firstname'] . ' ' . $request['lastname'];
     }
     if (empty($person['nationality'])){
