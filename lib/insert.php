@@ -5,13 +5,8 @@ $datetime = date("Y-m-d H:i:s");
 
 if(!$newEnquiry){
     $uid = $allValues['Inquiries']['uid'];
-
-    $logger->info('here 1',$allValues['Inquiries']);
-
     /* @var $inquiries MyORM */
     $inquiries = MyORM::for_table('inquiries')->use_id_column('inquiry_id')->where('uid',$uid)->find_one();
-    $logger->info('inq',$inquiries->as_array());
-
     $inquiries->set($allValues['Inquiries']);
     $inquiries->save();
 } else {
@@ -25,7 +20,6 @@ if(!$newEnquiry){
     $newUidObj = ORM::for_table('inquiries')->use_id_column('inquiry_id')->select('uid')->find_one($inquiries->id);
     $uid = $newUidObj->uid;
 }
-$logger->info('here 2');
 
 //ExtraFormInfo
 $obj = 'ExtraFormInfo';

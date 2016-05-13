@@ -315,11 +315,11 @@ function elog($in){
  * Validation functions
  */
 function phone($phone){
-    return true; // TODO
+    return true; 
 }
 
 function email($email){
-    return true; // TODO
+    return true; 
 }
 
 /*
