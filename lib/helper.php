@@ -178,7 +178,7 @@ function getPersons(){
         $person['name'] = $request['firstname'] . ' ' . $request['lastname'];
     }
     if (empty($person['nationality'])){
-        $person['nationality'] = $request['nationality'];
+        $person['nationality'] = isset($request['nationality'])? $request['nationality'] : '';
     }
 
     if( validatePerson($person) ){
