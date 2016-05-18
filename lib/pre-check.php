@@ -7,7 +7,8 @@ if ( empty($_POST) ){
 $comment = isset($_POST['comments']) ? $_POST['comments'] : false;
 if($comment){
     $markedAsSpam = (strpos($comment, 'http://') !== false) ||
-        (strpos($comment, '[url=') !== false);
+            (strpos($comment, 'https://') !== false) ||
+            (strpos($comment, '[url=') !== false);
 } else {
     $markedAsSpam = false;
 }
