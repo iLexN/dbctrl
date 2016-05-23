@@ -12,7 +12,7 @@ if ($email && $newEnquiry && array_key_exists($mainSite, $setting['p4email'])) {
         $data = $allValues['Inquiries'];
         $data['uid'] = $uid;
         $email_body=  $template->render($data);
-        $mail_subject = "Thank for your enquiry";
+        $mail_subject = "Thanks for your enquiry";
 
         $mail = new \PHPMailer();
         $mail->setFrom($mailConfig['mailFromAc'], $mailConfig['mailFromName']);
