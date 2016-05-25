@@ -3,6 +3,8 @@
 //logger
 $logger = new \Monolog\Logger($setting['logConfig']['name']);
 $logger->pushHandler(new \Monolog\Handler\StreamHandler($setting['logConfig']['path'], \Monolog\Logger::DEBUG));
+//todo set
+// \Monolog\ErrorHandler::register($logger);
 
 
 //db setup
