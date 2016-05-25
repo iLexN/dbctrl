@@ -1,7 +1,7 @@
 <?php
 
 $mail = new \PHPMailer();
-$mail->setFrom($setting['globalemails'], $setting['globalemails']);
+$mail->setFrom($setting['globalemailsFrom'], $setting['globalemailsFrom']);
 $mail->addAddress($setting['globalemails']);
 $mail->isHTML(true);
 $mailSubject = array();

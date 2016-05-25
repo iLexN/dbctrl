@@ -16,8 +16,8 @@ ORM::configure('logger', function ($log_string, $query_time) use ($logger) {
 });
 
 //template twig
-$loader = new Twig_Loader_Filesystem('template');
+$loader = new Twig_Loader_Filesystem($setting['twigConfig']['templatePath']);
 $twig = new Twig_Environment($loader, array(
-    'cache' => 'cache',
+    'cache' => $setting['twigConfig']['cachePath'],
     'debug' => true
 ));
