@@ -95,7 +95,9 @@ if(isset($allValues['Persons']['Everyone'])){
         $page = $dbTblObj->page;
     }
     $dbTblObj->set('uid',$uid);
-    $dbTblObj->set('site',$allValues['Inquiries']['source']);
+    if ( isset($allValues['Inquiries']['source']) ){
+        $dbTblObj->set('site',$allValues['Inquiries']['source']);
+    }
     $dbTblObj->set('page',$page + 1);
     $dbTblObj->set('date',$datetime);
     $c = isset($allValues['formCach']['completed']) ? $allValues['formCach']['completed'] : 0;

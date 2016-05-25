@@ -2,7 +2,7 @@
 
 //send email P4
 $email = isset($allValues['Inquiries']['email']) ? $allValues['Inquiries']['email'] : false;
-$mainSite = mainSite($allValues['Inquiries']['source']);
+$mainSite = isset($allValues['Inquiries']['source']) ? mainSite($allValues['Inquiries']['source']) : '';
 if ($email && $newEnquiry && array_key_exists($mainSite, $setting['p4email'])) {
     $count = ORM::for_table('inquiries')->where('email', $email)->count();
     if ($count == 1) {
