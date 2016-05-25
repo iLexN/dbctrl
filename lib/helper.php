@@ -182,7 +182,7 @@ function getPersons(){
     }
 
     if( validatePerson($person) ){
-        if( checkDateFormat($person['dateofbirth']) && !empty($person['dateofbirth']) && empty($person['age']) ){
+        if( isset($person['dateofbirth']) && checkDateFormat($person['dateofbirth']) && !empty($person['dateofbirth']) && empty($person['age']) ){
             $person['age'] = CalcAge($person['dateofbirth']);
         }
         $person['relationship'] = "Policy Holder";
@@ -205,7 +205,7 @@ function getPersons(){
         }
     }
     if( validatePerson($person) ){
-        if( checkDateFormat($person['dateofbirth']) && !empty($person['dateofbirth']) && empty($person['age']) ){
+        if( isset($person['dateofbirth']) && checkDateFormat($person['dateofbirth']) && !empty($person['dateofbirth']) && empty($person['age']) ){
             $person['age'] = CalcAge($person['dateofbirth']);
         }
         $person['relationship'] = "Spouse";
