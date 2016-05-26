@@ -36,12 +36,12 @@ if ( isset($allValues[$obj]) ){
 
 //InqUrl
 $obj = 'InqUrl';
-if ( isset($allValues[$obj]) ){
+if ( isset($allValues[$obj]) && $newEnquiry ){
     $table = 'inqUrl';
-    $dbTblObj = ORM::for_table($table)->use_id_column('inqUrl_id')->where('uid',$uid)->find_one();
-    if ( !$dbTblObj ){
+    //$dbTblObj = ORM::for_table($table)->use_id_column('inqUrl_id')->where('uid',$uid)->find_one();
+    //if ( !$dbTblObj ){
         $dbTblObj = ORM::for_table($table)->create();
-    }
+    //}
     $dbTblObj->set('uid',$uid);
     $dbTblObj->set($allValues[$obj]);
     $dbTblObj->save();
