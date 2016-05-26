@@ -146,19 +146,20 @@ return array(
     'contact_method' => array( // CHI individual form 1
         'transformation' => array('chainContacts' => array())
     ),
+    /*
     'mainSite' => array( // get the site eg PP-FP => PP for mail to client
         //'transformation' => array('mainSite' => array())
     ),
-
+    */
     // Stuff that needs validation
     'email' => array(
-        'validation' => array('email' => array()), // email
+        //'validation' => array('email' => array()), // email
     ),
     'phone' => array(
-        'validation' => array('phone' => array()) // daytime phone
+        //'validation' => array('phone' => array()) // daytime phone
     ),
     'phone2' => array(
-        'validation' => array('phone' => array()) // mobile phoen
+        //'validation' => array('phone' => array()) // mobile phoen
     ),
 
     // Stuff that should just works.
@@ -181,7 +182,7 @@ return array(
     'area_of_cover' => array(),
     'industry' => array(),
     'emailDomain'=>array(),
-    'oldUid'=>array(),
+    //'oldUid'=>array(),
     'cmid'=>array(),
     'dgid'=>array(),
     'kwid'=>array(),
