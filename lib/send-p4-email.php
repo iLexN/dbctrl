@@ -11,7 +11,7 @@ if ($email && $newEnquiry && array_key_exists($mainSite, $setting['p4email'])) {
         $template = $twig->loadTemplate($mailConfig['mailBody']);
         $data = $allValues['Inquiries'];
         $data['uid'] = $uid;
-        $logger->info('p4 mail' , $data);
+        //$logger->info('p4 mail' , $data);
         $email_body=  $template->render($data);
         $mail_subject = "Thanks for your enquiry";
 
