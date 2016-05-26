@@ -23,6 +23,7 @@ if ($uid) {
 
     if (!$enquiry) {
         $logger->info("Invalid uid", array('uid', $uid));
+        exit();
     }
 
     $out = $enquiry->as_array();
