@@ -142,7 +142,7 @@ function getMembers(){
     }
 
     if(count($persons) >= 1){
-        if ( !is_array( $request['Everyone'] ) ) $request['Everyone'] = array();
+        if ( isset($request['Everyone']) && !is_array( $request['Everyone'] ) ) $request['Everyone'] = array();
         $request['Everyone'] = array_merge( $request['Everyone'], $persons );
     }
 }
