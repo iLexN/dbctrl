@@ -4,6 +4,6 @@
         "j4mie/idiorm": "v1.5.1",
         "monolog/monolog": "1.19.0",
         "phpmailer/phpmailer" : "v5.2.15",
-        "twig/twig" : "v1.24.0"
+        "twig/twig" : "v1.24.1"
     }
 }
