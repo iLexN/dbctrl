@@ -27,7 +27,7 @@ foreach($validInputs as $input => $process){
 // Copy everything to a final array for insertion.
 foreach($validInputs as $input => $process){
     if(!isset($process['discard'])){
-        if(isset($request[$input])){
+        if(isset($request[$input]) && !empty($request[$input])){
             if(isset($process['object'])){
                 $allValues[$process['object']][$input] = $request[$input];
             } else {
