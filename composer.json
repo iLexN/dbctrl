@@ -2,7 +2,7 @@
     "require": {
         "j4mie/paris": "v1.5.4",
         "j4mie/idiorm": "v1.5.1",
-        "monolog/monolog": "1.*",
+        "monolog/monolog": "1.21.0",
         "phpmailer/phpmailer" : "v5.2.16",
         "twig/twig" : "v1.24.1"
     }
