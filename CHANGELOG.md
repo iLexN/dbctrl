@@ -1,4 +1,22 @@
 #### [Current]
+
+#### [2.1.6]
+ * [eb79b48](../../commit/eb79b48) - __(iLexN)__ add lang field
+ * [65e3f15](../../commit/65e3f15) - __(iLexN)__ twig package update
+ * [238b45e](../../commit/238b45e) - __(iLexN)__ package version update
+ * [e3a2589](../../commit/e3a2589) - __(iLexN)__ package version update
+ * [9d005be](../../commit/9d005be) - __(iLexN)__ package version update
+ * [8c79b7b](../../commit/8c79b7b) - __(iLexN)__ package update
+ * [042d79f](../../commit/042d79f) - __(iLexN)__ package update
+ * [a9c55c3](../../commit/a9c55c3) - __(iLexN)__ twig package version update
+ * [3d85a8f](../../commit/3d85a8f) - __(iLexN)__ pp p4 edm template update https link
+ * [8d5298f](../../commit/8d5298f) - __(iLexN)__ package update
+ * [2028235](../../commit/2028235) - __(iLexN)__ umi email template change https when go to umi
+ * [253bbc6](../../commit/253bbc6) - __(iLexN)__ package version update
+ * [b4e24cc](../../commit/b4e24cc) - __(iLexN)__ umi email template update
+ * [67f39ab](../../commit/67f39ab) - __(iLexN)__ add change log
+ * [a9cf56d](../../commit/a9cf56d) - __(iLexN)__ package version update
+ * [b991b1d](../../commit/b991b1d) - __(iLexN)__ gitignore maintenance.php
  * [defddb2](../../commit/defddb2) - __(iLexN)__ fix empty input overwrite.
  * [fdcf63d](../../commit/fdcf63d) - __(iLexN)__ package update
  * [7dfbada](../../commit/7dfbada) - __(iLexN)__ twig version update
