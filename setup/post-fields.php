@@ -195,6 +195,8 @@ return array(
     'creative_id'=>array(),
 
     'newsletter'=>array(),
+    'lang'=>array(),
+
     'referred_domain'=>array(),
 
     // That goes to another table.
