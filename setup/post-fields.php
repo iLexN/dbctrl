@@ -195,7 +195,7 @@ return array(
     'creative_id'=>array(),
 
     'newsletter'=>array(),
-    'lang'=>array(),
+    'language'=>array(),
 
     'referred_domain'=>array(),
 
