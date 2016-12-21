@@ -73,7 +73,7 @@ function url_decode($config){
     global $request;
     $field = $config[0];
     if(isset($request[$field]) && $request[$field]){
-        $request[$field] = urldecode($request[$field]);
+        $request[$field] = trim(urldecode($request[$field]));
     }
 }
 
@@ -315,11 +315,11 @@ function elog($in){
  * Validation functions
  */
 function phone($phone){
-    return true; 
+    return true;
 }
 
 function email($email){
-    return true; 
+    return true;
 }
 
 /*
