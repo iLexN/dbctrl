@@ -1,5 +1,9 @@
 #### [Current]
 
+#### [2.2.0]
+ * [0c9a7bf](../../commit/0c9a7bf) - __(2017-02-28 14:39:13 +0800)__ php package update : twig , phpmailer , monolog
+ * [9169c7d](../../commit/9169c7d) - __(2017-02-28 14:24:12 +0800)__ nationality , ', ' ->> ' / '
+
 #### [2.1.8]
  * [b85bc05](../../commit/b85bc05) - __(2016-12-21 14:31:47 +0800)__ trim keywords field value
  * [57c6be3](../../commit/57c6be3) - __(2016-12-05 12:12:49 +0800)__ package version update : monolog
