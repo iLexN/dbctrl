@@ -1,5 +1,9 @@
 #### [Current]
 
+#### [2.1.8]
+ * [b85bc05](../../commit/b85bc05) - __(2016-12-21 14:31:47 +0800)__ trim keywords field value
+ * [57c6be3](../../commit/57c6be3) - __(2016-12-05 12:12:49 +0800)__ package version update : monolog
+
 #### [2.1.7]
  * [05cab2f](../../commit/05cab2f) - __(2016-11-29 14:30:00 +0800)__ lang -> language
  * [6ab8008](../../commit/6ab8008) - __(2016-11-28 10:12:59 +0800)__ change log

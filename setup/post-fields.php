@@ -163,7 +163,9 @@ return array(
     ),
 
     // Stuff that should just works.
-    'nationality' => array(), // French
+    'nationality' => array(
+        'transformation' => array('transformString' => array('nationality'))
+    ), // French
     'title' => array(), // Dr./Mr.
     'source' => array(), // GS-AD
     'type' => array(), // Individual/Callback/...

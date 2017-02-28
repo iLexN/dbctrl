@@ -35,6 +35,14 @@ function emailDomain(){
 	$request['emailDomain'] = array_pop(explode('@', $request['email']));
 }
 
+function transformString($config){
+    global $request;
+    $field = $config[0];
+    if(isset($request[$field]) && $request[$field]){
+        $request[$field] = str_replace(', ', ' / ' , $request[$field]);
+    }
+}
+
 function chainContacts($config){
     global $request;
 
