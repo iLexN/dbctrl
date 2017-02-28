@@ -3,7 +3,7 @@
         "j4mie/paris": "v1.5.4",
         "j4mie/idiorm": "v1.5.1",
         "monolog/monolog": "1.*",
-        "phpmailer/phpmailer" : "v5.2.16",
+        "phpmailer/phpmailer" : "v5.2.*",
         "twig/twig" : "v1.*"
     }
 }
